@@ -1,8 +1,5 @@
 import os
-
-
-class FileSystemScannerException(Exception):
-    pass
+from src.filesystemscannerexception import FileSystemScannerException
 
 
 class FileSystemScanner:
@@ -28,8 +25,7 @@ class FileSystemScanner:
         self.fpath = fpath
 
     def scan_for(self, filetype, callback):
-        """
-        Scans for specific filetype in the nested folder
+        """Scans for specific filetype in the nested folder
 
         Args:
             filetype ([type]): Filetype
@@ -54,4 +50,3 @@ def callback(node):
 if __name__ == "__main__":
     fss = FileSystemScanner("/home/maker")
     fss.scan_for("elf", callback)
-    print(help(fss.scan_for))
