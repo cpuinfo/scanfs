@@ -20,8 +20,8 @@ sys.setrecursionlimit(1500)
 # -- Project information -----------------------------------------------------
 
 project = "scanfs"
-copyright = "2021, Mahesh Patil"
-author = "Mahesh Patil"
+copyright = "2021, CPU Info"
+author = "CPU Info"
 
 # The full version, including alpha/beta/rc tags
 release = "v0.1"
