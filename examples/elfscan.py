@@ -1,7 +1,7 @@
 import os
 import subprocess
-from scanfs.filesystemscanner import FileSystemScanner
-from scanfs.filesystemscannerexception import FileSystemScannerException
+from scanfs.fsscanner import FileSystemScanner
+from scanfs.fsscannerex import FSScannerException
 
 
 def callback(fpath, node):

@@ -2,7 +2,7 @@ import os
 import magic
 import subprocess
 from tqdm import tqdm
-from scanfs.filesystemscannerexception import FileSystemScannerException
+from scanfs.fsscannerex import FSScannerException
 
 
 class FileSystemScanner:
