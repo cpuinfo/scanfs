@@ -10,5 +10,5 @@ setup(
     extra_requires=dict(tests=["pytest"]),
     packages=find_packages(where="src"),
     package_dir={"": "src"},
-    url="",
+    url="https://github.com/cpuinfo/scanfs",
 )
