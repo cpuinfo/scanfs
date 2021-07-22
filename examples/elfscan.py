@@ -1,17 +1,3 @@
-# scanfs
-
-This module scans the filesystem and provides custom hooks to handle each file
-type of your choice.
-
-## Installation
-
-```bash
-pip install scanfs
-```
-
-## Example
-
-```python
 import os
 import subprocess
 from scanfs.filesystemscanner import FileSystemScanner
@@ -33,13 +19,3 @@ def callback(fpath, node):
 
 fss = FileSystemScanner("/usr/bin")
 fss.checksec_on_elfs()
-```
-
-## Developer
-
-```bash
-python -m build
-twine upload dist/*
-```
-
-> Ref: https://packaging.python.org/tutorials/packaging-projects/

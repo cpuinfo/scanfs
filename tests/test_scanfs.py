@@ -1,5 +1,6 @@
 from decimal import Context
-from src.filesystemscanner import FileSystemScanner, FileSystemScannerException
+from scanfs.filesystemscanner import FileSystemScanner
+from scanfs.filesystemscannerexception import FileSystemScannerException
 import pytest
 
 
