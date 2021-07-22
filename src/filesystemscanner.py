@@ -1,6 +1,6 @@
 import os
-import filetype
 import magic
+from tqdm import tqdm
 from filesystemscannerexception import FileSystemScannerException
 
 
@@ -36,8 +36,30 @@ class FileSystemScanner:
             is found
         """
         nodes = os.scandir(self.fpath)
-        for node in nodes:
+
+        for node in tqdm(nodes, desc="Scanning...", unit=" files", unit_scale=1):
             callback(self.fpath, node)
+
+    def scan_for_elfs(self, callback):
+        """
+        Scans for elf file types in the nested folder
+
+        Args:
+            callback (function): Function called when the elf file type
+            is found
+        """
+        nodes = os.scandir(self.fpath)
+
+        try:
+            for node in tqdm(
+                nodes, desc="Scanning ELF files...", unit=" files", unit_scale=1
+            ):
+                fpath = os.path.join(self.fpath, node.name)
+
+                if magic.from_file(fpath).find("ELF") != -1 and not node.is_symlink():
+                    callback(self.fpath, node)
+        except:
+            pass  # TODO: Handle the exceptions while scanning directory
 
     def _check_str_param(self, param):
         if not isinstance(param, str) or not param:
@@ -53,14 +75,13 @@ if __name__ == "__main__":
     def callback(fpath, node):
         try:
             path = os.path.join(fpath, node.name)
-            # statinfo = os.stat(path)
-            print("#")
+            statinfo = os.stat(path)
             if not node.is_dir() and not node.is_symlink():
                 files.append(magic.from_file(path))
-        except:
-            print("An exception occurred")
+        except Exception as e:
+            print("An exception occurred: " + str(e))
 
     fss = FileSystemScanner("/usr/bin")
     # fss = FileSystemScanner("/home/maker/Downloads")
-    fss.scan_for("elf", callback)
-    print(files)
+    fss.scan_for_elfs(callback)
+#    print(files)
