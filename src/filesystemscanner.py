@@ -1,5 +1,6 @@
 import os
 import magic
+import subprocess
 from tqdm import tqdm
 from filesystemscannerexception import FileSystemScannerException
 
@@ -75,9 +76,14 @@ if __name__ == "__main__":
     def callback(fpath, node):
         try:
             path = os.path.join(fpath, node.name)
+            completed_process = subprocess.run(
+                ["checksec", "--format=json", "--file=" + str(path)],
+                capture_output=True,
+                check=True,
+            )
+            # print(completed_process)
             statinfo = os.stat(path)
-            if not node.is_dir() and not node.is_symlink():
-                files.append(magic.from_file(path))
+            files.append(magic.from_file(path))
         except Exception as e:
             print("An exception occurred: " + str(e))
 
