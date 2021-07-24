@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="scanfs",
-    version="0.0.3",
+    version="0.0.5",
     description="File system scanner in Python",
     author="CPU Info",
     author_email="cpuinfo10@gmail.com",

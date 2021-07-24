@@ -18,7 +18,7 @@ class FileSystemScanner:
         fpath (str): Folder in the filesytem to scan
 
     Raises:
-        FileSystemScannerException: [Exception when the
+        FSScannerException: [Exception when the
         folder path fpath is empty or not valid]
     """
 
@@ -62,30 +62,8 @@ class FileSystemScanner:
         except:
             pass  # TODO: Handle the exceptions while scanning directory
 
-    def checksec_dump(self, fpath, node):
-        try:
-            path = os.path.join(fpath, node.name)
-            completed_process = subprocess.run(
-                ["checksec", "--format=json", "--file=" + str(path)],
-                capture_output=True,
-                check=True,
-            )
-            print(completed_process)
-        except Exception as e:
-            print("An exception occurred: " + str(e))
-
-    def checksec_on_elfs(self):
-        """
-        Checks the security features enabled on elf
-
-        Args:
-            filename (str): Filename to store the results of checksec in JSON
-            format
-        """
-        self.scan_for_elfs(self.checksec_dump)
-
     def _check_str_param(self, param):
         if not isinstance(param, str) or not param:
-            raise FileSystemScannerException(
+            raise FSScannerException(
                 f'Firmware path "{param}" is empty or not valid string!!!'
             )
