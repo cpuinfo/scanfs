@@ -11,7 +11,10 @@ pip install scanfs
 
 ## Example
 
-### How to scan a folder with ELF files and get stat info?
+### How to write your own scanner enhancements?
+
+This example scans the `/usr/bin` folder for ELF files and handles the callback
+to provide file stat info.
 
 ```python
 import os
@@ -34,7 +37,7 @@ fss = FileSystemScanner("/usr/bin")
 fss.scan_for_elfs(callback)
 ```
 
-### Simple way to scan EFL for binary protection using checksec
+### Simple way to scan ELF files for binary protection check using `checksec` utility
 
 ```python
 import os
