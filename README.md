@@ -39,6 +39,8 @@ fss.scan_for_elfs(callback)
 
 ### Simple way to scan ELF files for binary protection check using `checksec` utility
 
+> `checksec` utility can be downloaded here
+
 ```python
 import os
 import subprocess
