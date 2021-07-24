@@ -28,6 +28,7 @@ class CheckSecScanner(FileSystemScanner):
             )
 
             self.fd.write(completed_process.stdout.decode("utf-8"))
+            self.fd.flush()
         except Exception as e:
             print("An exception occurred: " + str(e))
 
@@ -40,5 +41,9 @@ class CheckSecScanner(FileSystemScanner):
             fformat
         """
         self.fd = open(self.results_fpath, "w")
+        self.fd.write(
+            "RELRO,CANARY,NX,PIE,RPATH,RUNPATH,Symbols,FORTIFY,Fortified,Fortifiable,FILE"
+        )
+        self.fd.flush()
         self.scan_for_elfs(self.checksec_dump)
         self.fd.close()

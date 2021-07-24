@@ -18,7 +18,9 @@ setup(
     long_description_content_type="text/markdown",
     classifiers=[
         "Programming Language :: Python :: 3",
+        "Operating System :: POSIX",
+        "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
-        "Topic :: System :: Operating System Kernels :: Linux",
+        "Topic :: Software Development :: Libraries :: Python Modules",
     ],
 )
